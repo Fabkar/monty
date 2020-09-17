@@ -13,9 +13,12 @@ void (*match_function(char *function))(stack_t **node, unsigned int line_s)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}
 	};
-	while (i < 4)
+	while (i < 7)
 	{
 		if (strcmp(functions[i].opcode, function) == 0)
 			return (functions[i].f);
