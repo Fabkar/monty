@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 		line_s++;
 		token = strtok(line, " \t\n");
 		if (strcmp(token, "push") == 0)
-			g->token_l = strtok(NULL, " \t\n");
+			g->token_l = strtok(NULL, " \n\t\r\a");
 		match_function(token)(&node, line_s);
 	}
 	free(strings);
