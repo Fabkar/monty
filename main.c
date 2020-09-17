@@ -14,11 +14,19 @@ int main(int argc, char **argv)
 	unsigned int line_s = 0;
 	stack_t *node = NULL;
 
+	if(argc != 2)
+	{
+		printf("USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	if (argc == 2)
 	{
 		fp = fopen(argv[1], "r");
-		if (!fp)
-			printf("couldn't open the file");
+		if (fp == NULL)
+		{
+			printf("Error: Can't open file %s\n", argv[1]);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 		return (1);
@@ -33,9 +41,9 @@ int main(int argc, char **argv)
 	while (getline(&line, &line_size, fp) != -1)
 	{
 		line_s++;
-		token = strtok(line, " \n");
+		token = strtok(line, " \t\n");
 		if (strcmp(token, "push") == 0)
-			g->token_l = strtok(NULL, " \n");
+			g->token_l = strtok(NULL, " \t\n");
 		match_function(token)(&node, line_s);
 	}
 	free(strings);

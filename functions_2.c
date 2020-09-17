@@ -17,22 +17,40 @@ int digit(char *var)
 }
 /**
  * pint - function
- * @stack: stack
+ * @stack: Pointer to stack's head.
  * @line_s: line
  * Return: Nothing.
  */
 void pint(stack_t **stack, unsigned int line_s)
 {
 	stack_t *head;
-	(void) line_s;
+
 	head = *stack;
-	while (head != NULL)
+
+	if (head == NULL)
 	{
-		printf("%d\n", head->n);
-		head = head->next;
-		if (head == *stack)
-		{
-			return;
-		}
+		printf("L%u: can't pint, stack empty\n", line_s);
+		exit(EXIT_FAILURE);
 	}
+	printf("%d\n", head->n);
+
+}
+/**
+ * pop - function to remove the top element from stack.
+ * @stack: pointer to stack's head.
+ * @line_s: line.
+ * Return: Nothing.
+ */
+void pop(stack_t **stack, unsigned int line_s)
+{
+	stack_t *node;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		printf("L%u: can't pop an empty stack\n", line_s);
+		exit(EXIT_FAILURE);
+	}
+	node  = *stack;
+	(*stack) = (*stack)->next;
+	free(node);
 }
