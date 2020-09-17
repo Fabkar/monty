@@ -32,22 +32,27 @@ int main(int argc, char **argv)
 		return (1);
 	strings = malloc(sizeof(char *) * 100);
 	if (!strings)
+	{
 		printf("Error: malloc failed");
 		exit(EXIT_FAILURE);
+	}
 	g = malloc(sizeof(global_t));
 	if (!g)
+	{
 		printf("Error: malloc failed");
 		exit(EXIT_FAILURE);
+	}
 	g->token_l = NULL;
 
 	while (getline(&line, &line_size, fp) != -1)
 	{
 		line_s++;
-		token = strtok(line, " \n\t\r\a");
+		token = strtok(line, DELIM);
 		if (strcmp(token, "push") == 0)
-			g->token_l = strtok(NULL, " \n\t\r\a");
+			g->token_l = strtok(NULL, DELIM);
 		match_function(token)(&node, line_s);
 	}
+	fclose(fp);
 	free(strings);
 	free_listint2(&node);
 	free(line);
