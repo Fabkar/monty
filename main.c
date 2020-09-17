@@ -32,9 +32,11 @@ int main(int argc, char **argv)
 		return (1);
 	strings = malloc(sizeof(char *) * 100);
 	if (!strings)
+		printf("Error: malloc failed");
 		exit(EXIT_FAILURE);
 	g = malloc(sizeof(global_t));
 	if (!g)
+		printf("Error: malloc failed");
 		exit(EXIT_FAILURE);
 	g->token_l = NULL;
 
