@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 	while (getline(&line, &line_size, fp) != -1)
 	{
 		line_s++;
-		token = strtok(line, " \t\n");
+		token = strtok(line, " \n\t\r\a");
 		if (strcmp(token, "push") == 0)
 			g->token_l = strtok(NULL, " \n\t\r\a");
 		match_function(token)(&node, line_s);
