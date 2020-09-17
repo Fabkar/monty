@@ -7,32 +7,32 @@
 */
 void push(stack_t **stack, unsigned int line_number)
 {
-    stack_t *node = NULL;
-    char *var = NULL;
-    int i = 0;
+	stack_t *node = NULL;
+	char *var = NULL;
+	int i = 0;
 
-    var = g->token_l;
+	var = g->token_l;
 
-    if (digit(var) == 0)
-    {
-        printf("L%u: usage: push integer\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-    i = atoi(var);
+	if (digit(var) == 0)
+	{
+		printf("L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	i = atoi(var);
 
-    node = malloc(sizeof(stack_t));
-    if (node == NULL)
-        exit(EXIT_FAILURE);
-    node->n = i;
-    node->next = *stack;
-    node->prev = NULL;
-    if (*stack == NULL)
-        (*stack) = node;
-    else
-    {
-        (*stack)->prev = node;
-        (*stack) = node;
-    }
+	node = malloc(sizeof(stack_t));
+	if (node == NULL)
+		exit(EXIT_FAILURE);
+	node->n = i;
+	node->next = *stack;
+	node->prev = NULL;
+	if (*stack == NULL)
+		(*stack) = node;
+	else
+	{
+		(*stack)->prev = node;
+		(*stack) = node;
+	}
 }
 
 /**
@@ -43,19 +43,19 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-    stack_t *head = NULL;
-    (void)(line_number);
-    head = *stack;
+	stack_t *head = NULL;
+	(void)(line_number);
+	head = *stack;
 
-    while (head != NULL)
-    {
-        printf("%d\n", head->n);
-        head = head->next;
-        if (head == *stack)
-        {
-            return;
-        }
-    }
+	while (head != NULL)
+	{
+		printf("%d\n", head->n);
+		head = head->next;
+		if (head == *stack)
+		{
+			return;
+		}
+	}
 }
 /**
 * free_listint2 - free a listin_t list.
@@ -64,15 +64,15 @@ void pall(stack_t **stack, unsigned int line_number)
 */
 void free_listint2(stack_t **head)
 {
-    stack_t *aux;
+	stack_t *aux;
 
-    if (!head)
-        return;
-    while (*head != NULL)
-    {
-        aux = (*head)->next;
-        free(*head);
-        *head = aux;
-    }
-    head = NULL;
+	if (!head)
+		return;
+	while (*head != NULL)
+	{
+		aux = (*head)->next;
+		free(*head);
+		*head = aux;
+	}
+	head = NULL;
 }
