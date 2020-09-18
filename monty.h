@@ -62,8 +62,8 @@ void pint(stack_t **, unsigned int);
 void swap(stack_t **, unsigned int);
 void add(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
-void sub(stack_t **stack, unsigned int line_number);
-void div(stack_t **stack, unsigned int line_number);
-void mul(stack_t **stack, unsigned int line_number);
+void sub(stack_t **, unsigned int );
+void div(stack_t **, unsigned int );
+void mul(stack_t **, unsigned int );
 
 #endif
