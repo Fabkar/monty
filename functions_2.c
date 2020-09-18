@@ -2,10 +2,9 @@
 /**
  * digit - Function to evaluate if is a number.
  * @var: pointer to second argument of a command line.
- *  @line_number: counter line.
  * Return: 1 if is a number else 0.
  */
-int digit(char *var, unsigned int line_number)
+int digit(char *var)
 {
 	int i = 0;
 
@@ -13,7 +12,6 @@ int digit(char *var, unsigned int line_number)
 	{
 		if (var[1] == '\0')
 		{
-			printf("L%u: usage: push integer\n", line_number);
 			return (0);
 		}
 		i = 1;
@@ -39,7 +37,7 @@ void pint(stack_t **stack, unsigned int line_s)
 
 	if (head == NULL)
 	{
-		printf("L%u: can't pint, stack empty\n", line_s);
+		dprintf(2, "L%u: can't pint, stack empty\n", line_s);
 		free_listint2(*stack);
 		free(g.line);
 		fclose(g.fp);
@@ -60,7 +58,7 @@ void pop(stack_t **stack, unsigned int line_s)
 
 	if (stack == NULL || *stack == NULL)
 	{
-		printf("L%u: can't pop an empty stack\n", line_s);
+		dprintf(2, "L%u: can't pop an empty stack\n", line_s);
 		free_listint2(*stack);
 		free(g.line);
 		fclose(g.fp);
@@ -84,7 +82,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	(void)(line_number);
 	if ((*stack) == NULL || ((*stack)->next == NULL))
 	{
-		printf("L%u: can't swap, stack too short\n", line_number);
+		dprintf(2, "L%u: can't swap, stack too short\n", line_number);
 		free_listint2(*stack);
 		free(g.line);
 		fclose(g.fp);

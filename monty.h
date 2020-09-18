@@ -52,7 +52,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int digit(char *var, unsigned int line_number);
+int digit(char *var);
 void free_listint2(stack_t *head);
 void (*match_function(char *function))(stack_t **node, unsigned int line_s);
 void push(stack_t **, unsigned int);

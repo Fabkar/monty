@@ -13,9 +13,9 @@ void push(stack_t **stack, unsigned int line_number)
 
 	var = g.token_l;
 
-	if (var == NULL || digit(var, line_number) == 0)
+	if (var == NULL || digit(var) == 0)
 	{
-		printf("L%u: usage: push integer\n", line_number);
+		dprintf(2, "L%u: usage: push integer\n", line_number);
 		free_listint2(*stack);
 		free(g.line);
 		fclose(g.fp);
@@ -26,7 +26,7 @@ void push(stack_t **stack, unsigned int line_number)
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
-		printf("Error: malloc failed");
+		dprintf(2, "Error: malloc failed\n");
 		free_listint2(*stack);
 		free(g.line);
 		fclose(g.fp);
