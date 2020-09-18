@@ -17,7 +17,7 @@ void (*match_function(char *function))(stack_t **node, unsigned int line_s)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
-		{"div", div},
+		{"div", _div},
 		{"mul", mul},
 		{NULL, NULL}
 	};
@@ -27,5 +27,5 @@ void (*match_function(char *function))(stack_t **node, unsigned int line_s)
 			return (functions[i].f);
 		i++;
 	}
-	return (NULL);
+	exit(EXIT_FAILURE);
 }

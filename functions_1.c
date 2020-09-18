@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
 * push - function to add a integer on top of stack.
 * @stack: Pointer to head of steack.
