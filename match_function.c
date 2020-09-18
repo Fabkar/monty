@@ -17,9 +17,11 @@ void (*match_function(char *function))(stack_t **node, unsigned int line_s)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", div},
+		{"mul", mul},
 		{NULL, NULL}
 	};
-	while (i < 8)
+	while (i < 10)
 	{
 		if (strcmp(functions[i].opcode, function) == 0)
 			return (functions[i].f);
