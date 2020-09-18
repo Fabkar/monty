@@ -81,12 +81,8 @@ void _div(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->
-
-	n /= n;
+	(*stack)->n /= n;
 }
-
-
 
 /**
  * mul - multiply top two elements of stack and push result

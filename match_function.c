@@ -19,6 +19,7 @@ void (*match_function(char *function))(stack_t **node, unsigned int line_s)
 		{"sub", sub},
 		{"div", _div},
 		{"mul", mul},
+		{"mod", _mod},
 		{NULL, NULL}
 	};
 	while (functions[i].opcode != NULL)

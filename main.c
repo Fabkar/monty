@@ -29,8 +29,6 @@ int main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		}
 	}
-	else
-		return (EXIT_SUCCESS);
 	g.token_l = NULL;
 	g.line = NULL;
 

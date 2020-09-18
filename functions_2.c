@@ -100,4 +100,29 @@ void swap(stack_t **stack, unsigned int line_number)
 	tmp->next = *stack;
 	(*stack) = (*stack)->prev;
 }
+/**
+ * _mod - computer remainder (modulus) /
+ * of second element divided by top element.
+ * @stack: Double pointer to head of stack.
+ * @line_number: line number of current operation.
+ * Return: void.
+ */
+void _mod(stack_t **stack, unsigned int line_number)
+{
+	int n;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	n = (*stack)->n;
+	pop(stack, line_number);
+	if (n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	(*stack)->n %= n;
+}
 
