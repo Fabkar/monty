@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		dprintf(2, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		free_listint2(node);
 		exit(EXIT_FAILURE);
 	}
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 		g.fp = fopen(argv[1], "r");
 		if (g.fp == NULL)
 		{
-			dprintf(2, "Error: Can't open file %s\n", argv[1]);
+			fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 			free_listint2(node);
 			exit(EXIT_FAILURE);
 		}
@@ -47,5 +47,5 @@ int main(int argc, char **argv)
 	fclose(g.fp);
 	free_listint2(node);
 	free(g.line);
-	return (0);
+	exit(EXIT_SUCCESS);
 }

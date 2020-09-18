@@ -15,7 +15,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (var == NULL || digit(var) == 0)
 	{
-		dprintf(2, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_listint2(*stack);
 		free(g.line);
 		fclose(g.fp);
@@ -26,7 +26,7 @@ void push(stack_t **stack, unsigned int line_number)
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_listint2(*stack);
 		free(g.line);
 		fclose(g.fp);
