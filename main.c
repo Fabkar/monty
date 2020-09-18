@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 	if (argc != 2)
 	{
 		dprintf(2, "USAGE: monty file\n");
+		free_listint2(node);
 		exit(EXIT_FAILURE);
 	}
 	if (argc == 2)
