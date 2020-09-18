@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 		}
 	}
 	else
-		exit(EXIT_SUCCESS);
+		return (EXIT_SUCCESS);
 	g.token_l = NULL;
 	g.line = NULL;
 
@@ -47,5 +47,5 @@ int main(int argc, char **argv)
 	fclose(g.fp);
 	free_listint2(node);
 	free(g.line);
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

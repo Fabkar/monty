@@ -60,10 +60,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	{
 		printf("%d\n", head->n);
 		head = head->next;
-		/*if (head == *stack)
-		{
-			return;
-		}*/
+
 	}
 }
 /**
