@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 		}
 	}
 	else
-		return (1);
+		exit(EXIT_SUCCESS);
 	g.token_l = NULL;
 	g.line = NULL;
 
