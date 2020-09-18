@@ -11,11 +11,14 @@ void push(stack_t **stack, unsigned int line_number)
 	char *var = NULL;
 	int i = 0;
 
-	var = g->token_l;
+	var = g.token_l;
 
-	if (digit(var) == 0)
+	if (var == NULL || digit(var, line_number) == 0)
 	{
 		printf("L%u: usage: push integer\n", line_number);
+		free_listint2(*stack);
+		free(g.line);
+		fclose(g.fp);
 		exit(EXIT_FAILURE);
 	}
 	i = atoi(var);
@@ -24,6 +27,9 @@ void push(stack_t **stack, unsigned int line_number)
 	if (node == NULL)
 	{
 		printf("Error: malloc failed");
+		free_listint2(*stack);
+		free(g.line);
+		fclose(g.fp);
 		exit(EXIT_FAILURE);
 	}
 	node->n = i;
@@ -65,17 +71,17 @@ void pall(stack_t **stack, unsigned int line_number)
 * @head: Pointer to head of the linked list.
 * Return: Nothing.
 */
-void free_listint2(stack_t **head)
+void free_listint2(stack_t *head)
 {
 	stack_t *aux;
 
 	if (!head)
 		return;
-	while (*head != NULL)
+	while (head != NULL)
 	{
-		aux = (*head)->next;
-		free(*head);
-		*head = aux;
+		aux = (head)->next;
+		free(head);
+		head = aux;
 	}
 	head = NULL;
 }

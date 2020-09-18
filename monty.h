@@ -25,14 +25,18 @@ typedef struct stack_s
 /**
 * struct var_global - Struct that store all global variables,
 * @token_l: The second agurment of a command line.
-*
+* @line: Line.
+* @fp: Fp.
 * Description: Simple global variable to analyze the second argument.
 */
 typedef struct var_global
 {
 	char *token_l;
+	char *line;
+	FILE *fp;
 } global_t;
-global_t *g;
+extern global_t g;
+global_t g;
 
 /**
  * struct instruction_s - opcode and its function
@@ -48,8 +52,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int digit(char *var);
-void free_listint2(stack_t **head);
+int digit(char *var, unsigned int line_number);
+void free_listint2(stack_t *head);
 void (*match_function(char *function))(stack_t **node, unsigned int line_s);
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);

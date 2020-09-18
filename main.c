@@ -8,54 +8,43 @@
  */
 int main(int argc, char **argv)
 {
-	FILE *fp;
-	char *line = NULL, *token = NULL, **strings = NULL;
+	char *token = NULL;
 	size_t line_size = 0;
 	unsigned int line_s = 0;
 	stack_t *node = NULL;
 
-	if(argc != 2)
+	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	if (argc == 2)
 	{
-		fp = fopen(argv[1], "r");
-		if (fp == NULL)
+		g.fp = fopen(argv[1], "r");
+		if (g.fp == NULL)
 		{
 			printf("Error: Can't open file %s\n", argv[1]);
+			free_listint2(node);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 		return (1);
-	strings = malloc(sizeof(char *) * 100);
-	if (!strings)
-	{
-		printf("Error: malloc failed");
-		exit(EXIT_FAILURE);
-	}
-	g = malloc(sizeof(global_t));
-	if (!g)
-	{
-		printf("Error: malloc failed");
-		exit(EXIT_FAILURE);
-	}
-	g->token_l = NULL;
+	g.token_l = NULL;
+	g.line = NULL;
 
-	while (getline(&line, &line_size, fp) != -1)
+	while (getline(&g.line, &line_size, g.fp) != -1)
 	{
 		line_s++;
-		token = strtok(line, DELIM);
+		token = strtok(g.line, DELIM);
+		if (token == NULL)
+			continue;
 		if (strcmp(token, "push") == 0)
-			g->token_l = strtok(NULL, DELIM);
+			g.token_l = strtok(NULL, DELIM);
 		match_function(token)(&node, line_s);
 	}
-	fclose(fp);
-	free(strings);
-	free_listint2(&node);
-	free(line);
-	free(g);
+	fclose(g.fp);
+	free_listint2(node);
+	free(g.line);
 	return (0);
 }
