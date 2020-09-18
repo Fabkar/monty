@@ -21,7 +21,7 @@ void (*match_function(char *function))(stack_t **node, unsigned int line_s)
 		{"mul", mul},
 		{NULL, NULL}
 	};
-	while (i < 10)
+	while (functions[i].opcode != NULL)
 	{
 		if (strcmp(functions[i].opcode, function) == 0)
 			return (functions[i].f);
